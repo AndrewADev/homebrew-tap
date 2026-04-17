@@ -28,6 +28,7 @@ class Bight < Formula
 
   def install
     binary = Dir["bight-*"].first
+    chmod "+x", binary
     bin.install binary => "bight"
     generate_completions_from_executable(bin/"bight", "completion")
   end
