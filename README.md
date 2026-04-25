@@ -1,14 +1,23 @@
-# homebrew-bight
+# homebrew-tap
 
-Homebrew tap for [bight](https://github.com/AndrewADev/bight) — patches `.env` files automatically on `git checkout`.
+My personal Homebrew tap for developer tools.
 
 ## Install
 
 ```sh
-brew tap AndrewADev/bight
+brew tap AndrewADev/tap
+```
+
+## Tools
+
+### bight
+
+Patches `.env` files automatically on `git checkout`. ([repo](https://github.com/AndrewADev/bight))
+
+```sh
 brew install bight
 ```
 
 ## Issues
 
-Please report issues in the [main repository](https://github.com/AndrewADev/bight/issues).
+Please report issues in the relevant tool's repository.
