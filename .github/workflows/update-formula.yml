@@ -21,6 +21,8 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,14 +35,20 @@ jobs:
       - name: Render formula
         env:
           GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
         run: |
-          VERSION="${{ inputs.version }}"
+          if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid version format"
+            exit 1
+          fi
           task render-formula VERSION="${VERSION#v}"
 
       - name: Commit and push
+        env:
+          VERSION: ${{ inputs.version }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add Formula/bight.rb
-          git commit -m "chore: update bight to ${{ inputs.version }}"
+          git commit -m "Update bight to $VERSION"
           git push
