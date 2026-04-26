@@ -1,0 +1,31 @@
+version: "3"
+
+tasks:
+  clean:
+    desc: Remove downloaded checksums.txt
+    cmds:
+      - rm -f checksums.txt
+
+  download-checksums:
+    desc: Download checksums.txt for a given VERSION from the bight release
+    requires:
+      vars: [VERSION]
+    cmds:
+      - gh release download "v{{.VERSION}}" --repo AndrewADev/bight --pattern checksums.txt
+
+  render-formula:
+    desc: Render Formula/bight.rb from template for a given VERSION
+    requires:
+      vars: [VERSION]
+    deps:
+      - task: download-checksums
+        vars: { VERSION: "{{.VERSION}}" }
+    env:
+      VERSION: "{{.VERSION}}"
+    cmds:
+      - |
+        export SHA256_DARWIN_ARM64=$(grep 'bight-darwin-arm64$' checksums.txt | awk '{print $1}')
+        export SHA256_DARWIN_AMD64=$(grep 'bight-darwin-amd64$' checksums.txt | awk '{print $1}')
+        export SHA256_LINUX_ARM64=$(grep 'bight-linux-arm64$'   checksums.txt | awk '{print $1}')
+        export SHA256_LINUX_AMD64=$(grep 'bight-linux-amd64$'   checksums.txt | awk '{print $1}')
+        envsubst < Formula/bight.rb.tmpl > Formula/bight.rb
