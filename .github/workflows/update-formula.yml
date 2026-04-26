@@ -25,6 +25,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.tap_token || github.token }}
+          repository: AndrewADev/homebrew-tap
 
       - name: Install task
         run: sh -c "$(curl -ssL https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
