@@ -19,9 +19,9 @@ tasks:
       vars: [VERSION]
     deps:
       - task: download-checksums
-        vars: { VERSION: "{{.VERSION}}" }
+        vars: { VERSION: '{{trimPrefix "v" .VERSION}}' }
     env:
-      VERSION: "{{.VERSION}}"
+      VERSION: '{{trimPrefix "v" .VERSION}}'
     cmds:
       - |
         export SHA256_DARWIN_ARM64=$(grep 'bight-darwin-arm64$' checksums.txt | awk '{print $1}')
