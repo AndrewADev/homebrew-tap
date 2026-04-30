@@ -1,7 +1,7 @@
 class Bight < Formula
   desc "Patches .env files automatically on git checkout"
   homepage "https://github.com/AndrewADev/bight"
-  version "v0.1.0"
+  version "0.1.0"
   license "MIT"
 
   on_macos do
