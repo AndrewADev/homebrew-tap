@@ -1,28 +1,28 @@
 class Bight < Formula
   desc "Patches .env files automatically on git checkout"
   homepage "https://github.com/AndrewADev/bight"
-  version "0.4.0"
+  version "0.5.0"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/AndrewADev/bight/releases/download/v#{version}/bight-darwin-arm64"
-      sha256 "8bbb1e0f12527dd3af2f5d64e5d869df6a3852c1092f49ab8fc8a68c69b3746d"
+      sha256 "7d7f776345698fa99c6290760b4cd39caff2073133d0058570c936aa0a02d1f2"
     end
     on_intel do
       url "https://github.com/AndrewADev/bight/releases/download/v#{version}/bight-darwin-amd64"
-      sha256 "ff3794bb8d81b4ecfaa03087a694c21a305795620f365da7384d8e5104529a18"
+      sha256 "733e8500f9ecd07179e73708c861d524b7b2f5af2deb2cfd4d16fa18c889eb5b"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/AndrewADev/bight/releases/download/v#{version}/bight-linux-arm64"
-      sha256 "ef640f6f42498a13fac6060346163cbb205b537227eb028fde020072715e47ee"
+      sha256 "47d14f4c7c4a0d35f07a6cceaadcf386f1c20eb55ce8577a7d3813a6e2781de6"
     end
     on_intel do
       url "https://github.com/AndrewADev/bight/releases/download/v#{version}/bight-linux-amd64"
-      sha256 "0a2c4096195a131d5b0d11ffe1083970521609ecffcb229d1ac17a4f4db85add"
+      sha256 "d072626312477d471e1b436ac9500b9877acd49ff946bdaaa51093cae5b395c7"
     end
   end
 
